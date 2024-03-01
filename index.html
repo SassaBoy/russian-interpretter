@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Simplified Interpreter</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        text-align: center;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+    }
+    #interpreter-container {
+        width: 80%;
+        margin: 50px auto;
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        animation: slideIn 0.5s ease forwards;
+    }
+    @keyframes slideIn {
+        from {
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+    #code-input {
+        width: 100%;
+        height: 200px;
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        resize: vertical;
+    }
+    #interpret-btn {
+        padding: 10px 20px;
+        background-color: #f57c00;
+        color: #fff;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+    #interpret-btn:hover {
+        background-color: #e65100;
+    }
+    #output {
+        text-align: left;
+        white-space: pre-wrap;
+        margin-top: 20px;
+        color: #333;
+    }
+    #output ul {
+        list-style-type: none;
+        padding: 0;
+    }
+    #output ul li {
+        background-color: #fafafa;
+        padding: 10px;
+        margin-bottom: 5px;
+        border-radius: 5px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+    #output ul li:hover {
+        background-color: #f5f5f5;
+    }
+</style>
+</head>
+<body>
+    <div id="interpreter-container">
+        <h1>Simplified Interpreter</h1>
+        <textarea id="code-input" placeholder="Paste your code here"></textarea>
+        <button id="interpret-btn">Interpret</button>
+        <div id="output"></div>
+    </div>
+
+    <!-- Include ResponsiveVoice.js library -->
+    <script src="https://code.responsivevoice.org/responsivevoice.js"></script>
+
+    <script>
+        function interpret() {
+            let code = document.getElementById('code-input').value;
+            let output = document.getElementById('output');
+
+            // Split code into lines
+            let lines = code.split('\n');
+            let interpretation = '';
+
+            // Interpret each line
+            lines.forEach(function(line, index) {
+                // Translate and speak the comment in Zulu accent
+                translateAndSpeak(line.trim());
+                interpretation += `<li>// ${line.trim()}</li>\n`;
+            });
+
+            output.innerHTML = `<ul>${interpretation}</ul>`;
+        }
+
+        // Function to translate and speak a comment in Zulu accent
+        function translateAndSpeak(comment) {
+            // Use ResponsiveVoice.js to speak the comment in Zulu accent
+            responsiveVoice.speak(comment, "Russian Female", {rate: 0.8});
+        }
+
+        document.getElementById('interpret-btn').addEventListener('click', function() {
+            interpret();
+        });
+    </script>
+</body>
+</html>
