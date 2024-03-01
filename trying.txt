@@ -1,0 +1,27 @@
+// This function finds the maximum number in an array
+function findMax(arr) {
+    return Math.max(...arr);
+}
+
+// Find the maximum number in [10, 5, 20, 15]
+console.log(findMax([10, 5, 20, 15]));
+
+
+// This function checks if a number is even or odd
+function isEvenOrOdd(num) {
+    return num % 2 === 0 ? 'Even' : 'Odd';
+}
+
+// Check if 7 is even or odd
+console.log(isEvenOrOdd(7));
+
+
+// This function reverses a string
+function reverseString(str) {
+    return str.split('').reverse().join('');
+}
+
+// Reverse the string 'hello'
+console.log(reverseString('hello'));
+
+
